@@ -15,8 +15,8 @@ class BinanceAPI {
 }
 
 // definimos helpers
-function getDateTime(){
-    const currentDate = new Date();
+Date.getDateTime = function(){
+    const currentDate = new this;
     
     const year = currentDate.getFullYear();
     const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Sumamos 1 porque los meses van de 0 a 11
@@ -30,7 +30,7 @@ function getDateTime(){
 }
 
 // definimos como mostrar los datos
-const print = txt => document.body.innerHTML = `<pre>${getDateTime()}: ${txt}<pre>${document.body.innerHTML}`;
+const print = txt => document.body.innerHTML = `<pre>${Date.getDateTime()}: ${txt}<pre>${document.body.innerHTML}`;
 const getBitcoinPrice = async () => print(`El precio del Bitcoin es: ${await BinanceAPI.getPriceOf('btc')} USDT`);
 
 // ejecutamos y seteamos un intervalo de 3 segundos
