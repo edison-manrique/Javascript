@@ -31,7 +31,7 @@ Date.getDateTime = function(){
 
 // definimos como mostrar los datos
 const print = txt => document.body.innerHTML = `<pre>${Date.getDateTime()}: ${txt}<pre>${document.body.innerHTML}`;
-const getBitcoinPrice = async () => print(`El precio del Bitcoin es: ${await BinanceAPI.getPriceOf('btc')} USDT`);
+const showBitcoinPrice = async () => print(`El precio del Bitcoin es: ${await BinanceAPI.getPriceOf('btc')} USDT`);
 
 // ejecutamos y seteamos un intervalo de 3 segundos
-getBitcoinPrice() && setInterval(getBitcoinPrice, 3000);
+showBitcoinPrice() && setInterval(showBitcoinPrice, 3000);
