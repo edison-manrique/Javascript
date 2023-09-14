@@ -8,8 +8,8 @@ class BinanceAPI {
     static baseUrl = 'https://api.binance.com/api/v3';
 
     static async getPriceOf(cryptocurrencySymbol = ''){
-        const pair = `${cryptocurrencySymbol.toUpperCase()}USDT`;
-        const response = await axios.get(`${this.baseUrl}/ticker/price?symbol=${pair}`);
+        const pair      = `${cryptocurrencySymbol.toUpperCase()}USDT`;
+        const response  = await axios.get(`${this.baseUrl}/ticker/price?symbol=${pair}`);
         return (+response.data.price).toFixed(2);
     }
 }
@@ -18,12 +18,12 @@ class BinanceAPI {
 Date.getDateTime = function(){
     const currentDate = new this;
     
-    const year = currentDate.getFullYear();
-    const month = String(currentDate.getMonth() + 1).padStart(2, '0'); // Sumamos 1 porque los meses van de 0 a 11
-    const day = String(currentDate.getDate()).padStart(2, '0');
-    const hours = String(currentDate.getHours()).padStart(2, '0');
-    const minutes = String(currentDate.getMinutes()).padStart(2, '0');
-    const seconds = String(currentDate.getSeconds()).padStart(2, '0');
+    const year      = String(currentDate.getFullYear()  );
+    const month     = String(currentDate.getMonth() + 1 ).padStart(2, '0'); // Sumamos 1 porque los meses van de 0 a 11
+    const day       = String(currentDate.getDate()      ).padStart(2, '0');
+    const hours     = String(currentDate.getHours()     ).padStart(2, '0');
+    const minutes   = String(currentDate.getMinutes()   ).padStart(2, '0');
+    const seconds   = String(currentDate.getSeconds()   ).padStart(2, '0');
 
     return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
 
