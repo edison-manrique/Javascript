@@ -119,7 +119,7 @@ client2.connect('Client1')
 client3.connect('Client1')
 client4.connect('Client1')
 await sleep(2000)
-client4.connections.Client1.send('Hola!, Soy Client4') // "Client4" ha enviado:  Hola!, Soy Client4
+client4.connections.Client1.send('Hola!') // "Client4" ha enviado:  Hola!
 await sleep(1000)
 client1.connections.Client4.send('Recibido Gracias!') // "Client1" ha enviado:  Recibido Gracias!
 await sleep(1000)
