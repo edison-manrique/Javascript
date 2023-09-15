@@ -88,8 +88,7 @@ class Chat {
     }
 
     disconnect(){
-        // if(this.peer) 
-            this.peer.destroy()
+        if(this.peer) this.peer.destroy()      
     }
 
 
@@ -114,16 +113,16 @@ self.Chat = Chat
 const client1 = new Chat('Client1') // Te has conectado con el ID: Client1
 const client2 = new Chat('Client2') // Te has conectado con el ID: Client2
 const client3 = new Chat('Client3') // Te has conectado con el ID: Client3
-const client4 = new Chat('Client4') // Te has conectado con el ID: Client3
+const client4 = new Chat('Client4') // Te has conectado con el ID: Client4
+await sleep(5000)
+client2.connect('Client1')
+client3.connect('Client1')
+client4.connect('Client1')
 await sleep(2000)
-client1.connect('Client2')
-client1.connect('Client3')
-client1.connect('Client4')
+client4.connections.Client1.send('Hola!, Soy Client4') // "Client4" ha enviado:  Hola!, Soy Client4
 await sleep(1000)
-client4.connections.Client1.send('Hola!, Soy Client4')
+client1.connections.Client4.send('Recibido Gracias!') // "Client1" ha enviado:  Recibido Gracias!
 await sleep(1000)
-client1.connections.Client4.send('Recibido Gracias!')
-await sleep(1000)
-client4.disconnect()
-    
+client4.disconnect() // "Client4" se ha desconectado!
+
 
