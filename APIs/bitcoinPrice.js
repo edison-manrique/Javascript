@@ -8,9 +8,9 @@ class BinanceAPI {
     static baseUrl = 'https://api.binance.com/api/v3';
 
     static async getPriceOf(cryptocurrencySymbol = ''){
-        const pair      = `${cryptocurrencySymbol.toUpperCase()}USDT`;
-        const response  = await axios.get(`${this.baseUrl}/ticker/price?symbol=${pair}`);
-        return (+response.data.price).toFixed(2);
+        const pair = `${cryptocurrencySymbol.toUpperCase()}USDT`;
+        const {data: {price}} = await axios.get(`${this.baseUrl}/ticker/price?symbol=${pair}`);
+        return (+price).toFixed(2);
     }
 }
 
@@ -30,8 +30,8 @@ Date.getDateTime = function(){
 }
 
 // definimos como mostrar los datos
-const print = txt => document.body.innerHTML = `<pre>${Date.getDateTime()}: ${txt}<pre>${document.body.innerHTML}`;
-const showBitcoinPrice = async () => print(`El precio del Bitcoin es: ${await BinanceAPI.getPriceOf('btc')} USDT`);
+const print = string => document.body.innerHTML = `<pre>${ Date.getDateTime() }: ${ string }<pre>${ document.body.innerHTML }`;
+const showBitcoinPrice = async () => print(`El precio del Bitcoin es: ${ await BinanceAPI.getPriceOf('btc') } USDT`);
 
 // ejecutamos y seteamos un intervalo de 3 segundos
 showBitcoinPrice() && setInterval(showBitcoinPrice, 3000);
